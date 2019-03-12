@@ -18,11 +18,11 @@ ui <- fluidPage(
         
       tabPanel("Predefined values",
                h4("Here, the incident rate is obtained from Savva et al. 2010. You can select which studies to use the values for the true positive rate and the true negative rate. You just need to select the disease and your age."),
-              textInput("name", label = h3("Enter the disease name:"), "Trisomy 13"),
+              selectInput("name", h3("Select the disease:"), c("Trisomy 13" = "T13", "Trisomy 18" = "T18", "Trisomy 21" = "T21")),
+              # textInput("name", label = h3("Enter the disease name:"), "Trisomy 13"),
               numericInput("age", label = h3("Enter your age:"), 26, min=16, max=49),
               selectInput("studies", h3("Select which studies to obtain values for the true positive rate and the true negative rate:"),
-                                 c("Taylor-Phillips et al. 2015" = "study1",
-                                   "Panorama" = "panorama"), selected = "study1"),
+                                 c("Taylor-Phillips et al. 2015" = "study1")),
               h3("Result:"),
               textOutput("prob_true_pos2"))
   )
